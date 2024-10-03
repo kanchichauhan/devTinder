@@ -1,17 +1,12 @@
 const express = require('express');
+const { auth } = require('./src/auth');
 
 const app = express();
 
-app.get('/test', (req, res) => {
-    res.send('TEST GET');
-});
-app.post('/test', (req, res) => {
-    res.send('TEST POST');
-});
-app.delete('/test', (req, res) => {
-    res.send('TEST DELETE');
+app.use('/user', auth, (req, res) => {
+    res.send('please enter correct token')
 });
 
-app.listen(8001, () => {
+app.listen(7001, () => {
     console.log('successfully logged in to the port 7776')
 });
